@@ -1,0 +1,3 @@
+#/bin/bash
+pactl list sinks | grep Sink | sed "s/^......//" | awk '{L[NR] = $1} END { if (NR == 2) { for (i = 1; i <= NR; i++) {if (L[i] != "0") print}} else {print}}'
+# pactl list sinks | grep -B 1 -e 'RUNNING' -e 'IDLE' | grep Sink | sed "s/^......//"
